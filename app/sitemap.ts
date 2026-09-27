@@ -8,6 +8,9 @@ type ProductRow = {
   created_at?: string | null;
 };
 
+const BASE_URL =
+  "https://doughy-donut-store.vercel.app";
+
 function getSupabase() {
   const url =
     process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -28,26 +31,23 @@ function getSupabase() {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl =
-    "https://your-domain.com";
-
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: baseUrl,
+      url: BASE_URL,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
 
     {
-      url: `${baseUrl}/shop`,
+      url: `${BASE_URL}/shop`,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.9,
     },
 
     {
-      url: `${baseUrl}/track-order`,
+      url: `${BASE_URL}/track-order`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
@@ -65,7 +65,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       await supabase
         .from("products")
         .select(
-          "id, slug, created_at"
+          "id, slug, created_at, updated_at"
         )
         .order("created_at", {
           ascending: false,
@@ -89,7 +89,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           product.slug || product.id;
 
         return {
-          url: `${baseUrl}/shop/${identifier}`,
+          url: `${BASE_URL}/shop/${identifier}`,
 
           lastModified:
             product.updated_at ||

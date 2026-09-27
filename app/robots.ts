@@ -1,5 +1,8 @@
 import type { MetadataRoute } from "next";
 
+const BASE_URL =
+  "https://doughy-donut-store.vercel.app";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -16,6 +19,6 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
 
-    sitemap: "https://your-domain.com/sitemap.xml",
+    sitemap: `${BASE_URL}/sitemap.xml`,
   };
 }

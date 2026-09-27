@@ -4,8 +4,11 @@ import "./globals.css";
 import Providers from "./providers";
 import { StoreSettingsProvider } from "@/app/context/StoreSettingsContext";
 
+const BASE_URL =
+  "https://doughy-donut-store.vercel.app";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://your-domain.com"),
+  metadataBase: new URL(BASE_URL),
 
   title: {
     default: "Doughy | Fresh Donuts & Sweet Treats",
@@ -47,7 +50,7 @@ export const metadata: Metadata = {
     title: "Doughy | Fresh Donuts & Sweet Treats",
     description:
       "Discover freshly made donuts, cakes, cupcakes, and sweet treats from Doughy.",
-    url: "https://your-domain.com",
+    url: BASE_URL,
     siteName: "Doughy",
     locale: "en_PH",
     type: "website",
@@ -87,7 +90,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <StoreSettingsProvider>
-          <Providers>{children}</Providers>
+          <Providers>
+            {children}
+          </Providers>
         </StoreSettingsProvider>
       </body>
     </html>
