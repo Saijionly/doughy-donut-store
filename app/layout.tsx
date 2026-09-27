@@ -77,8 +77,15 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: "/favicon.ico",
-  },
+  icon: [
+    {
+      url: "/doughy-icon.png",
+      type: "image/png",
+    },
+  ],
+  shortcut: "/doughy-icon.png",
+  apple: "/doughy-icon.png",
+},
 };
 
 export default function RootLayout({
